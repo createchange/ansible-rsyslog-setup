@@ -1,0 +1,2 @@
+---
+- import_playbook: pi_rsyslog.yml

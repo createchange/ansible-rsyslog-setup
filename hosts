@@ -1,0 +1,6 @@
+[rsyslog]
+denver ansible_host=172.19.12.73
+
+[rsyslog:vars]
+ansible_user=pi
+ansible_ssh_private_key_file=/home/jhweaver/.ssh/id_rsa

@@ -1,0 +1,33 @@
+---
+- name: Install applications
+  apt: update_cache=yes name={{item}} state=present install_recommends=no
+  with_items:
+    - vim
+    - dselect
+    - emacs
+    - emacs24-nox
+    - aide 
+    - rkhunter 
+    - logcheck 
+    - sudo 
+    - debconf-utils
+    - libnagios-object-perl
+    - libmonitoring-plugin-perl
+    - libnagios-plugin-perl
+    - nagios-nrpe-server
+    - nagios-plugins
+    - nagios-plugins-basic
+    - nagios-plugins-standard
+    - mrtgutils
+    - cron-apt
+    - ntp
+    - ntpdate
+    - libqrencode3
+    - debsums
+    - thin-provisioning-tools
+    - net-tools
+    - apt-transport-https
+    - clamav
+    - libpam-passwdqc
+    - libpasswdqc0
+    - passwdqc

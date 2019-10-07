@@ -1,0 +1,22 @@
+---
+- name: Add source keys
+  apt_key: id={{item}} keyserver=keyserver.ubuntu.com state=present
+  with_items:
+    - 9D6D8F6BC857C906
+    - 7638D0442B90D010
+    - 8B48AD6246925553
+
+- name: Add apt sources
+  apt_repository: repo={{item}} state=present
+  with_items:
+    - deb http://ftp.us.debian.org/debian stretch main contrib non-free
+    - deb http://security.debian.org/debian-security stretch/updates main contrib non-free
+    - deb http://ftp.us.debian.org/debian stretch-updates main contrib non-free
+    - deb http://ftp.us.debian.org/debian stretch-proposed-updates main contrib non-free
+    - deb-src http://ftp.us.debian.org/debian stretch main contrib non-free
+    - deb-src http://security.debian.org/debian-security stretch/updates main contrib non-free
+    - deb-src http://ftp.us.debian.org/debian stretch-updates main contrib non-free
+    - deb-src http://ftp.us.debian.org/debian stretch-proposed-updates main contrib non-free
+
+- name: Update apt
+  apt: update_cache=yes

@@ -1,0 +1,13 @@
+---
+# handlers file for ansible_monitoring
+
+- name: apt-get update
+  apt: update_cache=yes
+
+- name: Reload ssh
+  service: name=ssh enabled=yes state=restarted
+
+- name: Initialize rkhunter
+  shell: rkhunter --propupd
+
+

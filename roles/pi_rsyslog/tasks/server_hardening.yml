@@ -1,0 +1,25 @@
+--- 
+- name: Check package state cronjob {{'#'}}1
+  cron: 
+    name: Check package state cronjob {{'#'}}1
+    minute: "2"
+    hour: "2"
+    weekday: "0"
+    job: '/usr/bin/debconf-get-selections > /etc/debian_conf'
+
+- name: Check package state cronjob {{'#'}}2
+  cron:
+    name: Check package state cronjob {{'#'}}2
+    minute: "1"
+    hour: "2"
+    weekday: "0"
+    job: '/usr/bin/dpkg --get-selections "*" > /etc/debian_packages'
+
+- name: ClamAV cronjob
+  cron: 
+    name: ClamAV cronjob
+    minute: "1"
+    hour: "3"
+    weekday: "0"
+    job: 'ionice -c3 nice -n 19 /usr/bin/clamscan -ri --no-summary --exclude="^/sys/" / 2> /dev/null'
+

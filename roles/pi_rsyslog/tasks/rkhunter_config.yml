@@ -1,0 +1,20 @@
+---
+- name: Copy /etc/rkhunter.conf
+  copy:
+    src: files/rkhunter.d/rkhunter.conf
+    dest: /etc/rkhunter.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Initialize rkhunter
+
+- name: Copy /etc/default/rkhunter
+  copy:
+    src: files/rkhunter.d/rkhunter
+    dest: /etc/default/rkhunter
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Initialize rkhunter

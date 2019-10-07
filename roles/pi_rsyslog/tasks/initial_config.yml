@@ -1,0 +1,43 @@
+---
+- name: Change root password
+  user:
+    name: pi
+    password: $6$mysecretsalt$pjs7HGhUyzPmIEV2I.nuDFBt.5i3cd.fKBQgpxA6.sGShWsOrS3qvInWlvVNtwu8pTjmiQjp6cnCYW7N7Q245/
+
+- name: Fix default keyboard layout
+  replace:
+    path: /etc/default/keyboard
+    regexp: XKBLAYOUT=".+"
+    replace: XKBLAYOUT="us"
+    backup: yes
+
+- name: Set timezone to America/{{ location }}
+  timezone:
+    name: America/{{ location }}
+
+- name: Configure locale
+  locale_gen:
+    name: en_US.UTF-8
+    state: present
+
+- name: Copy ssh config
+  copy:
+    src: files/sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Reload ssh
+
+- name: Copy new motd
+  copy:
+    src: files/motd
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Update apt cache
+  apt:
+    update_cache: yes

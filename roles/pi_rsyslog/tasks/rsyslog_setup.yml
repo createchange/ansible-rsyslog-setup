@@ -1,0 +1,18 @@
+---
+- name: Transfer rsyslog server config
+  copy:
+   backup: yes
+   src: files/rsyslog.d/rsyslog.conf
+   dest: /etc/rsyslog.conf
+   owner: root
+   group: root
+   mode: 0644
+
+- name: Transfer sample endpoint/library config
+  copy:
+    backup: yes
+    src: files/rsyslog.d/sample.conf
+    dest: /etc/rsyslog.d/sample.conf.remove
+    owner: root
+    group: root
+    mode: 0644

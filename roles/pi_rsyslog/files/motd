@@ -1,0 +1,10 @@
+
+================== INT LOGGING SERVER ==================
+
+   To add new endpoints to monitor:
+     create empty file for logs to filter into e.g. sudo touch /var/log/rai_den_sw01.log
+     copy sample file in /etc/rsyslog.d/ and edit accordingly
+     restart rsyslog service
+
+========================================================
+

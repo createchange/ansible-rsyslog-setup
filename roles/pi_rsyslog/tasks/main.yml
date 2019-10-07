@@ -1,0 +1,9 @@
+---
+# tasks file for ansible_monitoring
+#
+- import_tasks: initial_config.yml
+- import_tasks: sources_add.yml
+- import_tasks: rsyslog_setup.yml
+- import_tasks: package_install.yml
+- import_tasks: server_hardening.yml
+- import_tasks: rkhunter_config.yml

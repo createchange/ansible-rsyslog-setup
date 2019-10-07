@@ -1,0 +1,5 @@
+---
+- hosts: rsyslog
+  become: yes
+  roles:
+    - pi_rsyslog 
